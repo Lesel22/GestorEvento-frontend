@@ -3,7 +3,7 @@ import { useAuth } from "../hooks/useAuth"
 import { useNavigate, Link } from "react-router"
 import { loginUser } from "../services/auth";
 import userIcon from "../assets/icons/tabler_user-filled.svg"
-import candadoIcon from "./assets/icons/tabler_lock-filled.svg"
+import candadoIcon from "../assets/icons/tabler_lock-filled.svg"
 
 const LOGIN_URL = "http://127.0.0.1:8000/login";
 

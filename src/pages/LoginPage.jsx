@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { useAuth } from "../hooks/useAuth"
 import { useNavigate, Link } from "react-router"
 import { loginUser } from "../services/auth";
+import userIcon from "../assets/icons/tabler_user-filled.svg"
+import candadoIcon from "./assets/icons/tabler_lock-filled.svg"
 
 const LOGIN_URL = "http://127.0.0.1:8000/login";
 
@@ -89,7 +91,7 @@ const LoginPage = () => {
               value={form.username}
             />
             <img 
-              src="/src/assets/icons/tabler_user-filled.svg" 
+              src={userIcon}
               alt="icono"
               className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
             />
@@ -104,7 +106,7 @@ const LoginPage = () => {
               value={form.password}
             />
             <img 
-              src="/src/assets/icons/tabler_lock-filled.svg" 
+              src={candadoIcon}
               alt="icono"
               className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
             />

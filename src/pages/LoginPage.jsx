@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router"
 import { loginUser } from "../services/auth";
 import userIcon from "../assets/icons/tabler_user-filled.svg"
 import candadoIcon from "../assets/icons/tabler_lock-filled.svg"
+import Icon from "../utils/Icon";
 
 const LOGIN_URL = "http://127.0.0.1:8000/login";
 
@@ -90,9 +91,8 @@ const LoginPage = () => {
               onChange={handleChange}
               value={form.username}
             />
-            <img 
-              src={userIcon}
-              alt="icono"
+            <Icon 
+              name= "tabler_user-filled" 
               className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
@@ -105,9 +105,9 @@ const LoginPage = () => {
               onChange={handleChange}
               value={form.password}
             />
-            <img 
-              src={candadoIcon}
-              alt="icono"
+           
+            <Icon 
+              name= "tabler_lock-filled" 
               className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>

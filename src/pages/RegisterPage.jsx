@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useNavigate } from 'react-router'
 import { loginUser, registerUser } from '../services/auth';
+import Icon from '../utils/Icon';
 
 const REGISTER_URL = "http://127.0.0.1:8000/registro";
 
@@ -65,10 +66,15 @@ function RegisterPage() {
               value={form.nombre}
               required
             />
-            <img 
+            {/* <img 
               src="/src/assets/icons/tabler_user-filled.svg" 
               alt="icono"
               className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+            /> */}
+            <Icon 
+            name= "tabler_user-filled" 
+            className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+           
             />
           </div>
           <div className="text-black relative">
@@ -81,10 +87,15 @@ function RegisterPage() {
               value={form.apellido}
               required
             />
-            <img 
+            {/* <img 
               src="/src/assets/icons/tabler_user-filled.svg"
               alt="icono"
               className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+            /> */}
+            <Icon 
+            name= "tabler_user-filled" 
+            className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+           
             />
           </div>
           <div className="text-black relative">
@@ -97,10 +108,15 @@ function RegisterPage() {
               value={form.correo}
               required
             />
-            <img 
+            {/* <img 
               src="/src/assets/icons/tabler_mail.svg" 
               alt="icono"
               className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+            /> */}
+            <Icon 
+            name= "tabler_mail" 
+            className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+           
             />
           </div>
           <div className="text-black relative">
@@ -113,10 +129,15 @@ function RegisterPage() {
               value={form.password}
               required
             />
-            <img 
+            {/* <img 
               src="/src/assets/icons/tabler_lock-filled.svg" 
               alt="icono"
               className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+            /> */}
+            <Icon 
+            name= "tabler_lock-filled" 
+            className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+           
             />
           </div>
           <div className="text-black relative">
@@ -129,10 +150,15 @@ function RegisterPage() {
               value={form.password_confirm}
               required
             />
-            <img 
+            {/* <img 
               src="/src/assets/icons/tabler_lock-filled.svg" 
               alt="icono"
               className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+            /> */}
+            <Icon 
+            name= "tabler_lock-filled" 
+            className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+           
             />
           </div>
           

@@ -4,6 +4,7 @@ import { getEvento } from '../services/eventos';
 import { format } from 'date-fns';
 import { useAuth } from '../hooks/useAuth';
 import { createInscripcion, fetchInscripciones, fetchInscripciones2 } from '../services/inscripciones';
+import Icon from '../utils/Icon';
 
 
 
@@ -51,16 +52,22 @@ function EventoPage() {
                 
                     <div className='flex flex-col'>
                         <div className="flex flex-row items-center gap-1 text-[16px] px-2.5">
-                            <img 
+                            {/* <img 
                             src="/src/assets/icons/location_on.svg" 
                             alt="icono"
+                            /> */}
+                            <Icon 
+                            name= "location_on" 
                             />
                             <span className='font-roboto font-medium'>{evento.lugar}</span>
                         </div>
                         <div className="flex flex-row items-center gap-1 text-[16px] p-2.5">
-                            <img 
+                            {/* <img 
                             src="/src/assets/icons/tabler_calendar-week-filled.svg" 
                             alt="icono"
+                            /> */}
+                            <Icon 
+                            name= "tabler_calendar-week-filled" 
                             />
                             <span className='font-roboto font-medium'>{evento.fecha? format(new Date(evento.fecha), 'dd-MM-yyyy'): 'Nada'}</span>
                         </div>

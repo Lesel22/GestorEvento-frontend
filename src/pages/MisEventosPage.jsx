@@ -4,6 +4,7 @@ import { useAuth } from '../hooks/useAuth';
 import { format } from 'date-fns';
 import { Link, useNavigate } from 'react-router';
 import { fetchEventos, searchEventos } from '../services/eventos';
+import Icon from '../utils/Icon';
 
 function MisEventosPage() {
 const { user} = useAuth()
@@ -37,10 +38,15 @@ const { user} = useAuth()
 
       <section className="w-full flex flex-col items-center gap-4 mx-auto px-20 ">
         <div className="w-full  text-black relative">
-          <img 
+          {/* <img 
             src="/src/assets/icons/tabler_search.svg" 
             alt="icono"
             className="absolute left-8 top-1/2 -translate-y-1/2 pointer-events-none"
+          /> */}
+          <Icon 
+          name= "tabler_search" 
+          className="absolute left-8 top-1/2 -translate-y-1/2 pointer-events-none"
+         
           />
           <input
             className=" w-full h-[50px] py-7 px-[66px] bg-white border border-black rounded-[15px]"
@@ -83,16 +89,22 @@ const { user} = useAuth()
                 <td className='px-4 py-2'>Finalizado</td>
                 <td className='px-4 py-2 flex justify-around'>
                   <Link to={`/eventos/${evento.id}`}>
-                    <img 
+                    {/* <img 
                       src="/src/assets/icons/tabler_edit.svg" 
                       alt="icono"
-                      />
+                      /> */}
+                    <Icon 
+                    name= "tabler_edit" 
+                    />
                   </Link>
                   <Link to={`/eventos/${evento.id}`}>
-                    <img 
+                    {/* <img 
                       src="/src/assets/icons/delete.svg" 
                       alt="icono"
-                      />
+                      /> */}
+                    <Icon 
+                    name= "delete" 
+                    />
                   </Link>
                 </td>
               </tr>

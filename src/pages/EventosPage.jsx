@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { fetchEventos, searchEventos } from '../services/eventos';
 import { format } from 'date-fns';
 import { Link } from 'react-router';
+import Icon from '../utils/Icon';
 
 function EventosPage() {
   const [eventos, setEventos] = useState([])
@@ -34,10 +35,14 @@ function EventosPage() {
 
       <section className="flex flex-col items-center gap-3 mx-auto">
         <div className="w-full  text-black relative">
-          <img 
+          {/* <img 
             src="/src/assets/icons/tabler_search.svg" 
             alt="icono"
             className="absolute left-8 top-1/2 -translate-y-1/2 pointer-events-none"
+          /> */}
+          <Icon 
+          name= "tabler_search" 
+          className="absolute left-8 top-1/2 -translate-y-1/2 pointer-events-none"
           />
           <input
             className=" w-full h-[50px] py-7 px-[66px] bg-white border border-black rounded-[15px]"
@@ -64,17 +69,23 @@ function EventosPage() {
               
               <div className='flex flex-row justify-between'>
                 <div className="flex flex-row items-center gap-1 text-[16px] px-2.5">
-                  <img 
+                  {/* <img 
                     src="/src/assets/icons/location_on.svg" 
                     alt="icono"
-                    />
+                    /> */}
+                  <Icon 
+                  name= "location_on" 
+                  />
                   <span className='font-roboto font-medium'>{evento.lugar}</span>
                 </div>
                 <div className="flex flex-row items-center gap-1 text-[16px] p-2.5">
-                  <img 
+                  {/* <img 
                     src="/src/assets/icons/tabler_calendar-week-filled.svg" 
                     alt="icono"
-                    />
+                    /> */}
+                  <Icon 
+                  name= "tabler_calendar-week-filled" 
+                  />
                   <span className='font-roboto font-medium'>{format(new Date(evento.fecha), 'dd-MM-yyyy')}</span>
                 </div>
               </div>

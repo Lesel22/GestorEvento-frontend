@@ -30,7 +30,7 @@ function EventosPage() {
 
   console.log(eventos)
   return (
-    <main className='w-full px-20'>
+    <main className='w-full px-6 min-w-[320px]'>
       <h1 className="text-[40px] font-bold font-playfair text-center py-5">Eventos</h1>
 
       <section className="flex flex-col items-center gap-3 mx-auto">

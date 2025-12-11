@@ -33,10 +33,10 @@ function InscripcionesPage() {
   }
 
   return (
-    <main className='w-full min-w-5xl'>
+    <main className=' w-full min-w-[320px]'>
       <h1 className="text-[40px] font-bold font-playfair text-center py-5">Inscripciones</h1>
 
-      <section className=" flex flex-col items-center gap-3 mx-auto px-20">
+      <section className=" flex flex-col items-center gap-3 mx-auto px-6">
         <div className="w-full  text-black relative">
           {/* <img 
             src="/src/assets/icons/tabler_search.svg" 
@@ -68,12 +68,12 @@ function InscripcionesPage() {
         <div className=' w-full border-2 border-[#777777] rounded-[15px] overflow-hidden'> 
 
         <table className="w-full font-roboto text-[16px] table-auto font-medium ">
-           <thead className="bg-[#777777] text-white">
+           <thead className="w-full bg-[#777777] text-white">
             <tr>
-              <th className="px-10 py-2 w-1/2 text-left">Nombre</th>
-              <th className="px-4 py-2 w-3/12 text-left">Fecha</th>
-              <th className="px-4 py-2 w-2/12 text-left">Estado</th>
-              <th className="px-4 py-2 w-1/12 text-left"></th>
+              <th className="px-4 py-2 w-5/12 text-left">Nombre</th>
+              <th className="px-2 py-2 w-3/12 text-left">Fecha</th>
+              <th className="px-2 py-2 w-2/12 text-left">Estado</th>
+              <th className="px-2 py-2 w-2/12 text-left"></th>
             </tr>
           </thead>
 
@@ -82,19 +82,15 @@ function InscripcionesPage() {
         {inscripciones?.map(inscripcion => {
           return ( 
             <tr key = {inscripcion.id } className="border-t border-gray-300" >
-              <td className='px-10 py-2'>{inscripcion.nombre}</td>
-              <td className='px-4 py-2'>{format(new Date(inscripcion.fecha), 'dd-MM-yyyy')}</td>
-              <td className='px-4 py-2'>Pendiente</td>
-              <td className='px-4 py-2 flex justify-center'>
-                <Link to={`/eventos/${inscripcion.id}`}>
-                  {/* <img 
-                    src="/src/assets/icons/tabler_info-circle.svg" 
-                    alt="icono"
-                    /> */}
-                  <Icon 
-                  name= "tabler_info-circle" 
-                  />
-                </Link>
+              <td className='px-4 py-2'>{inscripcion.nombre}</td>
+              <td className='px-2 py-2'>{format(new Date(inscripcion.fecha), 'dd-MM-yyyy')}</td>
+              <td className='px-2 py-2'>Pendiente</td>
+              <td className='px-2 py-2 align-middle'>
+                <div className="flex items-center justify-center">
+                  <Link to={`/eventos/${inscripcion.id}`}>
+                    <Icon name="tabler_info-circle" />
+                  </Link>
+                </div>
               </td>
             </tr>
           )

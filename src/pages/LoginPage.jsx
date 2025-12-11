@@ -38,6 +38,7 @@ const LoginPage = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    console.log(form)
     const data = await loginUser(form)
 
     if (data){
@@ -78,8 +79,8 @@ const LoginPage = () => {
 
   return (
     <main className="flex flex-row justify-center gap-10">
-      <div className=" w-[600px] min-w-[600px] pl-[45px] pr-[45px] flex flex-col gap-[88px] text-[24px]"> 
-        <h2 className="text-black text-center text-[96px] font-playfair font-bold ">Calenda</h2>
+      <div className=" sm:w-[600px] max-w-[700px] min-w-[320px] pl-[45px] pr-[45px] flex flex-col gap-[88px] text-[24px]"> 
+        <h2 className="text-black text-center text-[60px] font-playfair font-bold ">Calenda</h2>
 
         <form onSubmit={handleLogin} className="flex flex-col text-black  gap-[25px]">
           <div className=" text-black relative ">
@@ -111,7 +112,7 @@ const LoginPage = () => {
               className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
-          <div className="flex flex-row text-center relative">
+          <div className="flex flex-col pl-2 text-center sm:flex-row sm:justify-between">
             <label className=" flex items-center gap-3 cursor-pointer select-none p-1">
               <input
                 type="checkbox"
@@ -120,8 +121,9 @@ const LoginPage = () => {
               />
               <span className=" text-black font-bold">Remember me</span>
             </label>
-            <Link to='/'>
-              <h1 className="absolute right-1 top-1/2 -translate-y-1/2  font-bold text-center">Forget password</h1>
+            <Link to='/'
+            className="flex items-center font-bold text-center">
+              <h1 >Forget password?</h1>
             </Link>
 
           </div>

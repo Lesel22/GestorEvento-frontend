@@ -31,9 +31,12 @@ export const loginUser = async (dataForm) => {
     body: JSON.stringify(dataForm)
   })
 
-  if (!response.ok) {
-    throw new Error('Error al obtener inscripciones')
-  }
+  const result = await response.json();
 
-  return await response.json()
+  console.log("📌 Respuesta del backend:", result);
+  console.log("📌 Status:", response.status);
+
+  if (response.ok) return result;
+
+  throw new Error(`Error al login \n - ${result.message}`);
 }

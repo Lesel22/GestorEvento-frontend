@@ -79,13 +79,13 @@ const LoginPage = () => {
 
   return (
     <main className="flex flex-row justify-center gap-10">
-      <div className=" sm:w-[600px] max-w-[700px] min-w-[320px] pl-[45px] pr-[45px] flex flex-col gap-[88px] text-[24px]"> 
+      <div className=" sm:w-[600px] max-w-[700px] min-w-[320px] pl-[45px] pr-[45px] flex flex-col gap-10 text-[16px]"> 
         <h2 className="text-black text-center text-[60px] font-playfair font-bold ">Calenda</h2>
 
-        <form onSubmit={handleLogin} className="flex flex-col text-black  gap-[25px]">
+        <form onSubmit={handleLogin} className="flex flex-col text-black px-10 gap-4">
           <div className=" text-black relative ">
             <input
-              className=" w-full py-7 px-[33px] bg-white border border-black rounded-[15px]"
+              className=" w-full py-4 px-6 bg-white border border-black rounded-[15px]"
               type="text"
               name="correo"
               placeholder="Username"
@@ -99,7 +99,7 @@ const LoginPage = () => {
           </div>
           <div className="text-black relative">
             <input
-              className=" w-full py-7 px-[33px] bg-white border border-black rounded-[15px]"
+              className=" w-full py-4 px-6 bg-white border border-black rounded-[15px]"
               type="password"
               name="password"
               placeholder="Password"
@@ -129,7 +129,7 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full rounded-[15px] py-7 font-boldr text-white bg-[#777777] hover:bg-[#3C3C3C] duration-300 cursor-pointer"
+            className="w-full rounded-[15px] py-4 font-boldr text-white bg-[#777777] hover:bg-[#3C3C3C] duration-300 cursor-pointer"
           >
             Login
           </button>
@@ -145,7 +145,7 @@ const LoginPage = () => {
 
         </form>
       </div>
-      <div className="w-[600px] min-w-[600px] hidden xl:flex">
+      <div className="w-[500px] min-w-[500px] hidden xl:flex">
         <img src="Online-calendar.svg" alt="Logo" />
       </div>
       {/* <img className= "w-[1000px] h-[599px]  overflow-visible hidden sm:flex"src="Online-calendar.svg" alt="Logo"></img> */}

@@ -1,15 +1,11 @@
-// /** @type {import('tailwindcss').Config} */
-// export default {
-//   content: [
-//     "./index.html",
-//     "./src/**/*.{js,jsx}",
-//   ],
-//   theme: {
-//     extend: {
-//       fontFamily: {
-//         'playfair': ['PlayfairDisplay', 'sans-serif'],
-//       },
-//     },
-//   },
-//   plugins: [],
-// };
+module.exports = {
+  theme: {
+    extend: {
+      screens: {
+        mobile: '360px',
+        tablet: '768px',
+        desktop: '1024px',
+      },
+    },
+  },
+}

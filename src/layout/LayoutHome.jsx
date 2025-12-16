@@ -12,9 +12,10 @@ const LayoutHome = () => {
         </div>
       </header>
 
-      <main className="flex min-h-screen items-start justify-center py-15">
-        <Outlet />
-      </main>
+      <Outlet />
+      {/* <main className="w-full flex  items-start justify-center pt-10">
+        
+      </main> */}
 
     </>
   )

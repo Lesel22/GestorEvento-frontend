@@ -33,6 +33,7 @@ const LoginPage = () => {
   const handleChange = (event) => {
     const { name, value } = event.target
 
+    console.log(getComputedStyle(document.documentElement).fontSize)
     setForm({ ...form, [name]: value })
   }
 
@@ -79,13 +80,13 @@ const LoginPage = () => {
 
   return (
     <main className="flex flex-row justify-center gap-10">
-      <div className=" sm:w-[600px] max-w-[700px] min-w-[320px] pl-[45px] pr-[45px] flex flex-col gap-10 text-[16px]"> 
-        <h2 className="text-black text-center text-[60px] font-playfair font-bold ">Calenda</h2>
+      <div className=" sm:w-[600px] max-w-[700px] min-w-[320px] p-11 flex flex-col gap-15 text-base"> 
+        <h2 className="text-black text-center text-7xl font-playfair font-bold ">Calenda</h2>
 
-        <form onSubmit={handleLogin} className="flex flex-col text-black px-10 gap-4">
-          <div className=" text-black relative ">
+        <form onSubmit={handleLogin} className="box-border flex flex-col text-black  px-10 gap-3">
+          <div className=" text-black relative  ">
             <input
-              className=" w-full py-4 px-6 bg-white border border-black rounded-[15px]"
+              className=" box-border text-[1rem] font-semibold w-full py-5 px-6 bg-white border border-black rounded-[15px]"
               type="text"
               name="correo"
               placeholder="Username"
@@ -94,12 +95,12 @@ const LoginPage = () => {
             />
             <Icon 
               name= "tabler_user-filled" 
-              className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+              className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
-          <div className="text-black relative">
+          <div className="text-black relative ">
             <input
-              className=" w-full py-4 px-6 bg-white border border-black rounded-[15px]"
+              className=" box-border text-[1rem]  font-semibold  w-full py-5 px-6 bg-white border border-black rounded-[15px]"
               type="password"
               name="password"
               placeholder="Password"
@@ -109,11 +110,11 @@ const LoginPage = () => {
            
             <Icon 
               name= "tabler_lock-filled" 
-              className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
+              className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
-          <div className="flex flex-col pl-2 text-center sm:flex-row sm:justify-between">
-            <label className=" flex items-center gap-3 cursor-pointer select-none p-1">
+          <div className="flex flex-col px-3 py-3 text-center sm:flex-row sm:justify-between">
+            <label className=" flex items-center gap-1 cursor-pointer select-none">
               <input
                 type="checkbox"
                 name="remember"
@@ -129,7 +130,7 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full rounded-[15px] py-4 font-boldr text-white bg-[#777777] hover:bg-[#3C3C3C] duration-300 cursor-pointer"
+            className="w-full box-border leading-none rounded-[15px] py-5.5 text-white text-[1.25rem] font-bold bg-[#777777] hover:bg-[#3C3C3C] duration-300 cursor-pointer"
           >
             Login
           </button>

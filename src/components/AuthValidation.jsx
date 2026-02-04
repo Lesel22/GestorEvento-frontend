@@ -8,7 +8,6 @@ const AuthValidation = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log(isAuth)
     if (!isAuth) {
       // Redireccionamos al login
       navigate('/')

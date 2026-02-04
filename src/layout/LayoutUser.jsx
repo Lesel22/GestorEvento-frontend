@@ -2,16 +2,11 @@ import { Link, Outlet } from "react-router"
 import { useAuth } from "../hooks/useAuth"
 import { useNavigate } from "react-router"
 import { useEffect, useRef, useState } from "react"
-import Icon from "../utils/Icon";
 
 const LayoutUser = () => {
   const navigate = useNavigate()
-
-
-  const [open, setOpen] = useState(false);
-
   const { logout, user } = useAuth()
-  const [abierto, setAbierto] = useState(false);
+  const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
   const handleLogout = () => {
@@ -36,16 +31,15 @@ const LayoutUser = () => {
   return (
     <>
       <header className=" w-full flex flex-col items-center px-4 " >
-
         <div className=" relative w-full flex flex-row justify-between py-4 items-center ">
           <Link to="/eventos">
             <h1 className="  font-playfair font-bold text-[2.5rem] ">Calenda</h1>
           </Link>
-
           <div className="hidden lg:w-full lg:flex lg:justify-between">
             <div className="flex flex-row justify-around w-full items-center text-2xl font-bold font-playfair ">
               <Link to="/inicio" onClick={() => setOpen(false)}>Inicio</Link>
               <Link to="/eventos" onClick={() => setOpen(false)}>Eventos</Link>
+              <Link to="/misEventos" onClick={() => setOpen(false)}>Mis Eventos</Link>
               <Link to="/inscripciones" onClick={() => setOpen(false)}>Inscripciones</Link>
             </div>
             <div className="flex flex-row text-2xl items-center gap-2 px-2 font-bold font-playfair  text-center">
@@ -58,32 +52,21 @@ const LayoutUser = () => {
               </button>
             </div>
           </div>
-
           <div className="lg:hidden " ref={ref}>
-
-
-            {/* Botón */}
             <button
               onClick={() => setOpen(!open)}
               className=" px-2 py-2 rounded  "
               >
-              <Icon name={open ? "x" : "menu"} />
+              <img src= {`${import.meta.env.BASE_URL}icons/${open ? "x" : "menu"}.svg`} />
             </button>
 
-          
-            {/* Overlay + menú */}
             {open && (
-            <div className=" absolute top-[104%] left-0 w-full z-50 " >
-
-              
-
-              {/* Menú deslizable */}
-              <div className=" bg-white shadow-xl border border-[#777777] text-center text-[1.5rem]">
-              
-
-                <div className="flex flex-col justify-around w-full py-4 gap-2 font-bold font-playfair ">
+              <div className=" absolute top-[104%] left-0 w-full z-50 " >
+                <div className=" bg-white shadow-xl border border-[#777777] text-center text-[1.5rem]">
+                  <div className="flex flex-col justify-around w-full py-4 gap-2 font-bold font-playfair ">
                     <Link to="/inicio" onClick={() => setOpen(false)}>Inicio</Link>
                     <Link to="/eventos" onClick={() => setOpen(false)}>Eventos</Link>
+                    <Link to="/misEventos" onClick={() => setOpen(false)}>Mis Eventos</Link>
                     <Link to="/inscripciones" onClick={() => setOpen(false)}>Inscripciones</Link>
                   </div>
 
@@ -98,25 +81,15 @@ const LayoutUser = () => {
                       Logout
                     </button>
                   </div>
+                </div>
               </div>
-
-            </div>
             )}
-          
           </div>
-          
         </div>
         <div className="w-full mx-auto rounded-[15px] h-1 bg-[#777777]"></div>
-
-      
       </header>
 
-
-
-
-
       <Outlet />
-
     </>
   )
 }

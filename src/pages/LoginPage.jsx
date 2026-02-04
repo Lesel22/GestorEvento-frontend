@@ -2,11 +2,6 @@ import { useEffect, useState } from "react"
 import { useAuth } from "../hooks/useAuth"
 import { useNavigate, Link } from "react-router"
 import { loginUser } from "../services/auth";
-import userIcon from "../assets/icons/tabler_user-filled.svg"
-import candadoIcon from "../assets/icons/tabler_lock-filled.svg"
-import Icon from "../utils/Icon";
-
-const LOGIN_URL = "http://127.0.0.1:8000/login";
 
 const LoginPage = () => {
   const { user, isAuth, setAuth } = useAuth()
@@ -19,7 +14,7 @@ const LoginPage = () => {
       if (user.tipo_usuario === "2") { //user.tipo_usuario es null, setAuth no funciona?
         navigate("/misEventos");
       } else {
-        navigate("/eventos");
+        navigate("/inicio");
       }
     }
 
@@ -32,50 +27,21 @@ const LoginPage = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target
-
-    console.log(getComputedStyle(document.documentElement).fontSize)
     setForm({ ...form, [name]: value })
   }
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(form)
     const data = await loginUser(form)
 
     if (data){
       setAuth(data)
-      console.log(data)
-      console.log(data.tipo_usuario)
       if (data.tipo_usuario === "2") { //user.tipo_usuario es null, setAuth no funciona?
         navigate("/misEventos");
       } else {
         navigate("/eventos");
       }
     }
-
-
-    // const options = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(form)
-    // }
-    // console.log(options)
-    
-    // // const response = await fetch('https://dummyjson.com/auth/login', options)
-    // const response = await fetch(LOGIN_URL, options)
-
-    // if (response.ok) {
-    //   const data = await response.json()
-
-    //   console.log(data)
-
-    //   setAuth(data)
-    //   // setAuth(data.access)
-
-    //   navigate('/eventos')
-    // }
   }
 
   return (
@@ -93,8 +59,9 @@ const LoginPage = () => {
               onChange={handleChange}
               value={form.username}
             />
-            <Icon 
-              name= "tabler_user-filled" 
+            <img 
+              src= {`${import.meta.env.BASE_URL}icons/tabler_user-filled.svg`}
+              alt="icono"
               className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
@@ -107,9 +74,9 @@ const LoginPage = () => {
               onChange={handleChange}
               value={form.password}
             />
-           
-            <Icon 
-              name= "tabler_lock-filled" 
+            <img 
+              src= {`${import.meta.env.BASE_URL}icons/tabler_lock-filled.svg`}
+              alt="icono"
               className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
@@ -123,8 +90,9 @@ const LoginPage = () => {
               <span className=" text-black font-bold">Remember me</span>
             </label>
             <Link to='/'
-            className="flex items-center font-bold text-center">
-              <h1 >Forget password?</h1>
+              className="flex items-center font-bold text-center"
+            >
+              Forget password?
             </Link>
 
           </div>
@@ -149,7 +117,6 @@ const LoginPage = () => {
       <div className="w-[500px] min-w-[500px] hidden xl:flex">
         <img src="Online-calendar.svg" alt="Logo" />
       </div>
-      {/* <img className= "w-[1000px] h-[599px]  overflow-visible hidden sm:flex"src="Online-calendar.svg" alt="Logo"></img> */}
     </main>
   )
 }

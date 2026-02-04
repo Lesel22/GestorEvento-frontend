@@ -18,6 +18,9 @@ import MisEventosPage from './pages/MisEventosPage.jsx'
 import LayoutUser from './layout/LayoutUser.jsx'
 import LayoutOrganizer from './layout/LayoutOrganizer.jsx'
 import CrearEventoPage from './pages/CrearEventoPage.jsx'
+import InicioPage from './pages/InicioPage.jsx'
+import ValidarUserPage from './pages/ValidarUserPage.jsx'
+import EditarEventoPage from './pages/EditarEventoPage.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -28,33 +31,21 @@ createRoot(document.getElementById('root')).render(
         <Route path='/' element={<LoginPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
+        <Route path='/habilitar-usuario' element={<ValidarUserPage />} />
       </Route>
 
       <Route element={<AuthValidation/>}>
-
-        <Route element={<RoleValidation role="3" />}>
-          <Route element={<LayoutUser />}>
-            <Route>
-              <Route path='/inicio' element={<EventosPage />} />
-              <Route path='/eventos' element={<EventosPage />} />
-              <Route path='/eventos/:id' element={<EventoPage />} />
-              <Route path='/inscripciones' element={<InscripcionesPage />} />
-              <Route path="*" element={<Navigate to="/eventos" replace />} />
-            </Route>
+        <Route element={<LayoutUser />}>
+          <Route>
+            <Route path='/inicio' element={<InicioPage />} />
+            <Route path='/eventos' element={<EventosPage />} />
+            <Route path='/eventos/:id' element={<EventoPage />} />
+            <Route path='/misEventos' element={<MisEventosPage />} />
+            <Route path='/crearEvento' element={<CrearEventoPage />} />
+            <Route path='/editarEvento/:id' element={<EditarEventoPage />} />
+            <Route path='/inscripciones' element={<InscripcionesPage />} />
+            <Route path="*" element={<Navigate to="/eventos" replace />} />
           </Route>
-        </Route>
-
-        <Route element={<RoleValidation role="2" />}>
-          <Route element={<LayoutOrganizer />}>
-            <Route>
-              {/* <Route path='/inicio' element={<MisEventosPage />} /> */}
-              <Route path='/misEventos' element={<MisEventosPage />} />
-              <Route path='/crearEvento' element={<CrearEventoPage />} />
-              {/* <Route path='/eventos/:id' element={<EventoPage />} />
-              <Route path='/inscripciones' element={<InscripcionesPage />} /> */}
-              {/* <Route path="*" element={<Navigate to="/eventos" replace />} /> */}
-            </Route>
-        </Route>
         </Route>
       </Route>
       

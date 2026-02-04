@@ -2,16 +2,22 @@ const BASE_URL = import.meta.env.VITE_BACKEND_URL
 const ENROLL_URL = `${BASE_URL}/inscripciones`
 const EVENTO_URL = `${BASE_URL}/evento`
 
-export const fetchInscripciones = async (id) => {
-  const url = `${ENROLL_URL}/${id}`
+export const isEnroll = async (user, id) => {
+  const url = `${ENROLL_URL}/${id}/estado`
 
-  const response = await fetch(url)
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${user.access}`  // 👈 aquí pasas el token
+    }
+  })
 
   return await response.json()
 }
 
-export const fetchInscripciones2 = async (user) => {
-  const url = `${ENROLL_URL}/${user.id}`
+export const fetchInscripciones = async (user) => {
+  const url = `${ENROLL_URL}`
 
   const response = await fetch(url, {
     method: 'GET',
@@ -42,8 +48,8 @@ export const createInscripcion = async (user, dataForm) => {
   
   const result = await response.json()
 
-  console.log("📌 Respuesta del backend:", result);
-  console.log("📌 Status:", response.status);
+  // console.log("📌 Respuesta del backend:", result);
+  // console.log("📌 Status:", response.status);
 
 
   if (response.ok) {

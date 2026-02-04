@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useNavigate } from 'react-router'
 import { loginUser, registerUser } from '../services/auth';
-import Icon from '../utils/Icon';
-
-const REGISTER_URL = "http://127.0.0.1:8000/registro";
 
 function RegisterPage() {
   const { isAuth, setAuth } = useAuth()
@@ -24,8 +21,7 @@ function RegisterPage() {
     apellido: '',
     correo: '',
     password: '',
-    password_confirm: '',
-    tipoUsuario: '3'
+    password_confirm: ''
   })
 
   const handleChange = (event) => {
@@ -38,27 +34,20 @@ function RegisterPage() {
     event.preventDefault();
     const registro = await registerUser(form)
     if(registro){
-        const form2 = {
-            'correo': form.correo,
-            'password' : form.password
-        }
-        const data = await loginUser(form2)
-        if (data){
-            setAuth(data)
-            navigate('/eventos')
-        }
-    }  
+        navigate('/habilitar-usuario')
+      }
+      
   }
 
   return (
-    <main className="flex flex-row justify-center gap-10">
-      <div className=" w-[600px] min-w-[600px] pl-[45px] pr-[45px] flex flex-col gap-[88px] text-[24px]"> 
-        <h2 className="text-black text-center text-[96px] font-playfair font-bold ">Calenda</h2>
+    <main className="w-full flex flex-row items-start justify-center gap-10 pt-10">
+      <div className="  w-full max-w-[500px] min-w-[320px] px-8 flex justify-center flex-col gap-12 text-base"> 
+        <h2 className="text-black text-center text-6xl font-playfair font-bold ">Calenda</h2>
 
-        <form onSubmit={handleRegister} className="flex flex-col text-black  gap-[25px]">
+        <form onSubmit={handleRegister} className="box-border flex flex-col text-black gap-3">
           <div className=" text-black relative ">
             <input
-              className=" w-full py-7 px-[33px] bg-white border border-black rounded-[15px]"
+              className="box-border text-[1rem] font-semibold w-full py-5 px-6 bg-white border border-black rounded-[15px]"
               type="text"
               name="nombre"
               placeholder="Name"
@@ -66,41 +55,31 @@ function RegisterPage() {
               value={form.nombre}
               required
             />
-            {/* <img 
-              src="/src/assets/icons/tabler_user-filled.svg" 
+            <img 
+              src= {`${import.meta.env.BASE_URL}icons/tabler_user-filled.svg`}
               alt="icono"
-              className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
-            /> */}
-            <Icon 
-            name= "tabler_user-filled" 
-            className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
-           
+              className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
           <div className="text-black relative">
             <input
-              className=" w-full py-7 px-[33px] bg-white border border-black rounded-[15px]"
+              className=" box-border text-[1rem] font-semibold w-full py-5 px-6 bg-white border border-black rounded-[15px]"
               type="text"
               name="apellido"
-              placeholder="Lastname"
+              placeholder="Last name"
               onChange={handleChange}
               value={form.apellido}
               required
             />
-            {/* <img 
-              src="/src/assets/icons/tabler_user-filled.svg"
+            <img 
+              src= {`${import.meta.env.BASE_URL}icons/tabler_user-filled.svg`}
               alt="icono"
-              className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
-            /> */}
-            <Icon 
-            name= "tabler_user-filled" 
-            className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
-           
+              className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
           <div className="text-black relative">
             <input
-              className=" w-full py-7 px-[33px] bg-white border border-black rounded-[15px]"
+              className="box-border text-[1rem] font-semibold w-full py-5 px-6 bg-white border border-black rounded-[15px]"
               type="email"
               name="correo"
               placeholder="Email"
@@ -108,20 +87,15 @@ function RegisterPage() {
               value={form.correo}
               required
             />
-            {/* <img 
-              src="/src/assets/icons/tabler_mail.svg" 
+            <img 
+              src= {`${import.meta.env.BASE_URL}icons/tabler_mail.svg`}
               alt="icono"
-              className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
-            /> */}
-            <Icon 
-            name= "tabler_mail" 
-            className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
-           
+              className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
           <div className="text-black relative">
             <input
-              className=" w-full py-7 px-[33px] bg-white border border-black rounded-[15px]"
+              className=" box-border text-[1rem] font-semibold w-full py-5 px-6 bg-white border border-black rounded-[15px]"
               type="password"
               name="password"
               placeholder="Password"
@@ -129,20 +103,15 @@ function RegisterPage() {
               value={form.password}
               required
             />
-            {/* <img 
-              src="/src/assets/icons/tabler_lock-filled.svg" 
+            <img 
+              src= {`${import.meta.env.BASE_URL}icons/tabler_lock-filled.svg`}
               alt="icono"
-              className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
-            /> */}
-            <Icon 
-            name= "tabler_lock-filled" 
-            className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
-           
+              className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
           <div className="text-black relative">
             <input
-              className=" w-full py-7 px-[33px] bg-white border border-black rounded-[15px]"
+              className="box-border text-[1rem] font-semibold w-full py-5 px-6 bg-white border border-black rounded-[15px]"
               type="password"
               name="password_confirm"
               placeholder="Confirm password"
@@ -150,31 +119,23 @@ function RegisterPage() {
               value={form.password_confirm}
               required
             />
-            {/* <img 
-              src="/src/assets/icons/tabler_lock-filled.svg" 
+            <img 
+              src= {`${import.meta.env.BASE_URL}icons/tabler_lock-filled.svg`}
               alt="icono"
-              className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
-            /> */}
-            <Icon 
-            name= "tabler_lock-filled" 
-            className="absolute right-7 top-1/2 -translate-y-1/2 pointer-events-none"
-           
+              className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none"
             />
           </div>
-          
           <button
             type="submit"
-            className="w-full rounded-[15px] py-7 font-boldr text-white bg-[#777777] hover:bg-[#3C3C3C] duration-300 cursor-pointer"
+            className="w-full box-border border border-[#777777] leading-none rounded-[15px] py-5.5 text-white text-[1.25rem] font-bold bg-[#777777] hover:bg-[#3C3C3C] duration-300 cursor-pointer"
           >
-            Crear
+            Sign up
           </button>
-
         </form>
       </div>
-      <div className="w-[600px] min-w-[600px] hidden xl:flex">
+      <div className="w-[500px] min-w-[500px] hidden xl:flex">
         <img src="Online-calendar.svg" alt="Logo" />
       </div>
-      {/* <img className= "w-[1000px] h-[599px]  overflow-visible hidden sm:flex"src="Online-calendar.svg" alt="Logo"></img> */}
     </main>
   )
 }

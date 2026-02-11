@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams, Link } from 'react-router'
 import { deleteEvento, getEvento } from '../services/eventos';
 import { format } from 'date-fns';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from "../hooks/useAuth"
 import { createInscripcion, isEnroll } from '../services/inscripciones';
 
 function EventoPage() {
@@ -22,7 +22,6 @@ function EventoPage() {
       });
   }, []);
 
-  console.log(evento)
   const form = {
     'eventoId' : id,
     'usuarioId' : user.id,

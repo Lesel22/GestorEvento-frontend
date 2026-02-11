@@ -12,7 +12,6 @@ export const fetchEventos = async () => {
 
 export const getEvento = async (id) => {
   const url = `${EVENTO_URL}/${id}`
-  console.log(url)
 
   const response = await fetch(url)
 
@@ -91,7 +90,6 @@ export const updateEvento = async (user, id, dataForm, imagen) => {
 
 export const deleteEvento = async (user, id) => {
   const url = `${EVENTO_URL}/${id}`
-  console.log(url)
 
   const response = await fetch(url, {
     method: "DELETE",

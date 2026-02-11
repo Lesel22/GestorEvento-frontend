@@ -10,4 +10,3 @@ for (const [path, module] of Object.entries(files)) {
   icons[name] = module.default;
   
 }
-console.log(icons)

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from "../hooks/useAuth"
 import { format } from 'date-fns';
 import { Link, useNavigate } from 'react-router';
 import { deleteEvento, fetchEventos } from '../services/eventos';

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useNavigate } from 'react-router'
-import { loginUser, registerUser } from '../services/auth';
+import {registerUser} from '../services/auth';
 
 function RegisterPage() {
-  const { isAuth, setAuth } = useAuth()
+  const { isAuthenticated } = useAuth()
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (isAuth) {
+    if (isAuthenticated) {
       // Redireccionamos al login
       navigate('/eventos')
     }
 
-  }, [isAuth])
+  }, [isAuthenticated])
 
   const [form, setForm] = useState({
     nombre: '',

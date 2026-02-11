@@ -5,23 +5,15 @@ import { useEffect, useRef, useState } from "react"
 
 const LayoutHome = () => {
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
   const { logout, user } = useAuth()
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
-
-  const handleLogout = () => {
-    // borrar el LS, con la funcion logout del custom hook useAuth
-    logout()
-    // Redirigir al usuario al login
-    navigate('/')
-  }
 
   useEffect(() => {
     function handleClickOutside(e) {
       if (ref.current && !ref.current.contains(e.target)) {
         setOpen(false);
-        console.log('abierto')
       }
     }
 
@@ -30,13 +22,6 @@ const LayoutHome = () => {
   }, []);
   return (
     <>
-      {/* <header className="w-full py-4 px-6 bg-[#777777]">
-        <div className="">
-          <Link to='/'>
-            <h1 className="font-bold text-center font-playfair">Calenda</h1>
-          </Link>
-        </div>
-      </header> */}
       <header className=" w-full flex flex-col items-center px-4 " >
         <div className=" relative w-full flex flex-row justify-between py-4 px-2 items-center ">
           <Link to="/eventos">

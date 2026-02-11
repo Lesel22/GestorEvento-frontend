@@ -21,35 +21,41 @@ import CrearEventoPage from './pages/CrearEventoPage.jsx'
 import InicioPage from './pages/InicioPage.jsx'
 import ValidarUserPage from './pages/ValidarUserPage.jsx'
 import EditarEventoPage from './pages/EditarEventoPage.jsx'
+import { AuthProvider } from './hooks/useAuth.jsx'
+import PublicOnyRoute from './components/PublicOnlyRoute.jsx'
 
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-  
-    <Routes>
-      <Route element={<LayoutHome />}>
-        <Route path='/' element={<LoginPage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/register' element={<RegisterPage />} />
-        <Route path='/habilitar-usuario' element={<ValidarUserPage />} />
-      </Route>
+  <AuthProvider>
+    <BrowserRouter>
 
-      <Route element={<AuthValidation/>}>
-        <Route element={<LayoutUser />}>
-          <Route>
-            <Route path='/inicio' element={<InicioPage />} />
-            <Route path='/eventos' element={<EventosPage />} />
-            <Route path='/eventos/:id' element={<EventoPage />} />
-            <Route path='/misEventos' element={<MisEventosPage />} />
-            <Route path='/crearEvento' element={<CrearEventoPage />} />
-            <Route path='/editarEvento/:id' element={<EditarEventoPage />} />
-            <Route path='/inscripciones' element={<InscripcionesPage />} />
-            <Route path="*" element={<Navigate to="/eventos" replace />} />
+      <Routes>
+        <Route element={<PublicOnyRoute/>}>
+          <Route element={<LayoutHome />}>
+            <Route path='/' element={<LoginPage />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path='/habilitar-usuario' element={<ValidarUserPage />} />
           </Route>
         </Route>
-      </Route>
-      
-    </Routes>
 
-  </BrowserRouter>
+        <Route element={<AuthValidation/>}>
+          <Route element={<LayoutUser />}>
+            <Route>
+              <Route path='/inicio' element={<InicioPage />} />
+              <Route path='/eventos' element={<EventosPage />} />
+              <Route path='/eventos/:id' element={<EventoPage />} />
+              {/* <Route path='/misEventos' element={<MisEventosPage />} />
+              <Route path='/crearEvento' element={<CrearEventoPage />} />
+              <Route path='/editarEvento/:id' element={<EditarEventoPage />} /> */}
+              <Route path='/inscripciones' element={<InscripcionesPage />} />
+              <Route path="*" element={<Navigate to="/eventos" replace />} />
+            </Route>
+          </Route>
+        </Route>
+        
+      </Routes>
+
+    </BrowserRouter>
+  </AuthProvider>
 )

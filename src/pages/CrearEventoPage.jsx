@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { useNavigate } from 'react-router'
 import { createEvento } from '../services/eventos';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from "../hooks/useAuth"
 import { createInscripcion } from '../services/inscripciones';
 
 function CrearEventoPage() {
@@ -50,16 +50,7 @@ function CrearEventoPage() {
         form.imagen = imagen?.name
 
         const result = await createEvento(user, form, imagen);
-        // if (result) {
-        //   const form2 = {
-        //     usuarioId: user.id,
-        //     eventoId: result.content.id,
-        //     tipoUsuario: '1'
-        //   };
-        //   console.log(form2)
-        //   const result2 = await createInscripcion(user, form2 )
-
-          navigate('/misEventos');
+        navigate('/misEventos');
         
 
       } catch (error) {

@@ -1,29 +1,17 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useAuth } from "../hooks/useAuth"
 import { useNavigate, Link } from "react-router"
-import { loginUser } from "../services/auth";
 
 const LoginPage = () => {
-  const { user, isAuth, setAuth } = useAuth()
-
+  const { login } = useAuth()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (isAuth) {
-      // Redireccionamos al login
-      if (user.tipo_usuario === "2") { //user.tipo_usuario es null, setAuth no funciona?
-        navigate("/misEventos");
-      } else {
-        navigate("/inicio");
-      }
-    }
-
-  }, [isAuth])
-
   const [form, setForm] = useState({
-    correo: '',
+    email: '',
     password: ''
   })
+
+  const [error, setError] = useState(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -32,15 +20,13 @@ const LoginPage = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    const data = await loginUser(form)
+    setError(null)
 
-    if (data){
-      setAuth(data)
-      if (data.tipo_usuario === "2") { //user.tipo_usuario es null, setAuth no funciona?
-        navigate("/misEventos");
-      } else {
-        navigate("/eventos");
-      }
+    try {
+      await login(form); 
+      navigate("/inicio");
+    } catch (err) {
+      setError(err.message);
     }
   }
 
@@ -51,13 +37,18 @@ const LoginPage = () => {
 
         <form onSubmit={handleLogin} className="box-border flex flex-col text-black gap-3">
           <div className=" text-black relative  ">
+            {error && (
+              <p className="text-red-600 text-center font-semibold">
+                {error}
+              </p>
+            )}
             <input
               className=" box-border text-[1rem] font-semibold w-full py-5 px-6 bg-white border border-black rounded-[15px]"
               type="text"
-              name="correo"
+              name="email"
               placeholder="Username"
               onChange={handleChange}
-              value={form.username}
+              value={form.email}
             />
             <img 
               src= {`${import.meta.env.BASE_URL}icons/tabler_user-filled.svg`}

@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { useLocation, useNavigate, useParams } from 'react-router'
 import { createEvento, getEvento, updateEvento } from '../services/eventos';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from "../hooks/useAuth"
 
 function EditarEventoPage() {
     const {user} = useAuth()
@@ -27,8 +27,6 @@ function EditarEventoPage() {
     const [preview, setPreview] = useState(null);
     const [fecha, setFecha] = useState(new Date(evento.fecha));
 
-    console.log(evento)
-
     const original = {
       nombre: evento.nombre,
       fecha: evento.fecha,
@@ -42,8 +40,6 @@ function EditarEventoPage() {
 
     // const original = { ...form };
     const getChangedFields = (form, original) => {
-        console.log("origenal:", original)
-        console.log("form:", form)
         const changed = {};
         Object.keys(form).forEach(key => {
             // Comparación simple (para strings, números, booleanos)
@@ -78,7 +74,6 @@ function EditarEventoPage() {
       try {
         form.fecha = format(fecha, "yyyy-MM-dd")
         form.imagen = imagen.name
-        console.log(verificador)
 
         const result = await updateEvento(user, id, form, imagen);
         if (result) {

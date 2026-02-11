@@ -2,7 +2,6 @@ const BASE_URL = import.meta.env.VITE_BACKEND_URL
 const folder = 'imagenes'
 
 const generarCloudinaryLink = async (archivo) => {
-    console.log(archivo)
     if(archivo){
         const [fileName, extension] = archivo.name.split('.')
 
@@ -24,7 +23,6 @@ const generarCloudinaryLink = async (archivo) => {
 }
 
 const subirCloudinary = async (content) => {
-    console.log(content)
     // Para subir archivos multimedia mediante un fetch. axios
     const formData = new FormData()
 
@@ -36,7 +34,6 @@ const subirCloudinary = async (content) => {
     formData.append('folder', folder)
 
     const response = await fetch(content.url, {method:'POST', body:formData})
-    console.log(response.status)
 }
 
 const actualizarFotoEnLaAPI = async (content) => {

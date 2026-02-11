@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchInscripciones } from '../services/inscripciones';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from "../hooks/useAuth"
 import { format } from 'date-fns';
 import { Link } from 'react-router';
 import { searchEventos } from '../services/eventos';
@@ -12,7 +12,6 @@ function InscripcionesPage() {
   useEffect(() => {
     fetchInscripciones(user).then(results => {
       setInscripciones(results.content)
-      console.log(inscripciones)
     });
   }, []);
 

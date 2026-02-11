@@ -10,9 +10,7 @@ const LayoutUser = () => {
   const ref = useRef(null);
 
   const handleLogout = () => {
-    // borrar el LS, con la funcion logout del custom hook useAuth
     logout()
-    // Redirigir al usuario al login
     navigate('/')
   }
 
@@ -20,7 +18,6 @@ const LayoutUser = () => {
     function handleClickOutside(e) {
       if (ref.current && !ref.current.contains(e.target)) {
         setOpen(false);
-        console.log('abierto')
       }
     }
 

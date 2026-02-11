@@ -10,7 +10,6 @@ export default function ValidarUserPage() {
     // Obtener token del query string
     const params = new URLSearchParams(location.search);
     const token = params.get("token");
-    console.log(token)
 
     if (!token) {
       navigate("/error"); // Token no encontrado

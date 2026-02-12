@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { useAuth } from '../hooks/useAuth'
+import { useState } from 'react'
 import { useNavigate } from 'react-router'
-import {registerUser} from '../services/auth';
+import { registerRequest } from '../services/authService';
 
 function RegisterPage() {
-  const { isAuthenticated } = useAuth()
-
   const navigate = useNavigate()
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      // Redireccionamos al login
-      navigate('/eventos')
-    }
-
-  }, [isAuthenticated])
 
   const [form, setForm] = useState({
     nombre: '',
@@ -32,7 +21,7 @@ function RegisterPage() {
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    const registro = await registerUser(form)
+    const registro = await registerRequest(form)
     if(registro){
         navigate('/habilitar-usuario')
       }

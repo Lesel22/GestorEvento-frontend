@@ -26,3 +26,13 @@ export const logoutRequest = () =>
       "X-CSRFToken": getCSRFToken(),
     },
   });
+
+export const registerRequest = (data) =>
+  fetch(`${API}/auth/register`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "X-CSRFToken": getCSRFToken(),
+    },
+    body: JSON.stringify(data),
+  });

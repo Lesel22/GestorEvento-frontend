@@ -32,6 +32,7 @@ export const registerRequest = (data) =>
     method: "POST",
     credentials: "include",
     headers: {
+      "Content-Type": "application/json",
       "X-CSRFToken": getCSRFToken(),
     },
     body: JSON.stringify(data),

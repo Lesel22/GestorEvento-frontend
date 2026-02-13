@@ -23,7 +23,7 @@ function RegisterPage() {
     event.preventDefault();
     const registro = await registerRequest(form)
     if(registro){
-        navigate('/habilitar-usuario')
+        navigate('/esperando-validacion')
       }
       
   }

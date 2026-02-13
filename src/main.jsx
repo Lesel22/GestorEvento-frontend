@@ -21,6 +21,7 @@ import ValidarUserPage from './pages/ValidarUserPage.jsx'
 import EditarEventoPage from './pages/EditarEventoPage.jsx'
 import { AuthProvider } from './hooks/useAuth.jsx'
 import PublicOnyRoute from './components/PublicOnlyRoute.jsx'
+import EsperandoValidacion from './pages/EsperandoValidacion.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -34,6 +35,7 @@ createRoot(document.getElementById('root')).render(
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/habilitar-usuario' element={<ValidarUserPage />} />
+            <Route path='/esperando-validacion' element={<EsperandoValidacion />}></Route>
           </Route>
         </Route>
 

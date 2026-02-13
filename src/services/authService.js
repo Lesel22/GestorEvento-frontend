@@ -37,3 +37,26 @@ export const registerRequest = (data) =>
     },
     body: JSON.stringify(data),
   });
+
+export const validateRequest = (token) =>
+  fetch(`${API}/auth/validar-usuario`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": getCSRFToken(),
+    },
+    body: JSON.stringify(token),
+  });
+
+  //   const res = await fetch(
+  //   `${import.meta.env.VITE_BACKEND_URL}/validar-usuario`,
+  //   {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     credentials: "include", // 🔥 MUY IMPORTANTE
+  //     body: JSON.stringify({ token }),
+  //   }
+  // );

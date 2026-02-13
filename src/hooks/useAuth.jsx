@@ -3,6 +3,7 @@ import {
   loginRequest,
   getMeRequest,
   logoutRequest,
+  validateRequest
 } from "../services/authService";
 
 const AuthContext = createContext();
@@ -23,6 +24,17 @@ export const AuthProvider = ({ children }) => {
     const result = await res.json();
     setUser(result.user);
   };
+
+const validateUser = async (token) => {
+  const res = await validateRequest(token)
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.message || "Error al validar cuenta");
+  }
+
+  await checkAuth();
+};
 
   const logout = async () => {
     await logoutRequest();
@@ -50,7 +62,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, isAuthenticated, loading, login, logout }}
+      value={{ user, isAuthenticated, loading, login, logout, validateUser }}
     >
       {children}
     </AuthContext.Provider>
